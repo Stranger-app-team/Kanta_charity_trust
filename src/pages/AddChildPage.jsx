@@ -3,8 +3,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import { registerChild } from '../services/api';
 import { Plus, Trash2, ArrowRight } from 'lucide-react';
 import logo from '../assets/logo.png';
+import { useTranslation } from '../context/LanguageContext';
 
 const AddChildPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -60,7 +62,7 @@ const AddChildPage = () => {
     try {
       const result = await registerChild(payload);
       if (result.success) {
-        setSuccess('Form submitted successfully.');
+        setSuccess(t('msg.success'));
         // Reset the form instead of redirecting to the hidden directory
         setFormData({
           firstName: '',
@@ -78,10 +80,10 @@ const AddChildPage = () => {
           setSuccess('');
         }, 3000);
       } else {
-        setError(result.message || 'Failed to submit form.');
+        setError(result.message || t('msg.errorSubmit'));
       }
     } catch (err) {
-      setError('Network error occurred while submitting.');
+      setError(t('msg.errorNetwork'));
     } finally {
       setIsSubmitting(false);
     }
@@ -92,8 +94,8 @@ const AddChildPage = () => {
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '32px' }}>
         <img src={logo} alt="Kanta Charitable Trust Logo" style={{ width: '64px', height: 'auto' }} />
         <div>
-          <h1 className="page-title" style={{ marginBottom: '4px' }}>Kanta Charitable Trust</h1>
-          <p className="page-subtitle" style={{ marginBottom: 0 }}>Fill out personal details and assign initial help items.</p>
+          <h1 className="page-title" style={{ marginBottom: '4px' }}>{t('app.title')}</h1>
+          <p className="page-subtitle" style={{ marginBottom: 0 }}>{t('form.subtitle')}</p>
         </div>
       </div>
 
@@ -105,29 +107,29 @@ const AddChildPage = () => {
         {/* Personal Details Section */}
         <div className="split-layout">
           <div>
-            <h2 className="section-title">Personal Details</h2>
-            <p className="section-desc">Basic information about the child.</p>
+            <h2 className="section-title">{t('section.personal')}</h2>
+            <p className="section-desc">{t('section.personal.desc')}</p>
           </div>
           <div className="form-panel">
             <div className="form-grid">
               <div className="form-group">
-                <label className="form-label">First name</label>
-                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="form-control" placeholder="Enter first name" required />
+                <label className="form-label">{t('label.firstName')}</label>
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="form-control" placeholder={t('ph.firstName')} required />
               </div>
               <div className="form-group">
-                <label className="form-label">Last name</label>
-                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="form-control" placeholder="Enter last name" required />
+                <label className="form-label">{t('label.lastName')}</label>
+                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="form-control" placeholder={t('ph.lastName')} required />
               </div>
               <div className="form-group">
-                <label className="form-label">Date of birth</label>
+                <label className="form-label">{t('label.dob')}</label>
                 <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} className="form-control" required />
               </div>
               <div className="form-group">
-                <label className="form-label">Gender</label>
+                <label className="form-label">{t('label.gender')}</label>
                 <select name="gender" value={formData.gender} onChange={handleChange} className="form-control" required>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
+                  <option value="Male">{t('gender.male')}</option>
+                  <option value="Female">{t('gender.female')}</option>
+                  <option value="Other">{t('gender.other')}</option>
                 </select>
               </div>
             </div>
@@ -139,23 +141,23 @@ const AddChildPage = () => {
         {/* Contact Information Section */}
         <div className="split-layout">
           <div>
-            <h2 className="section-title">Contact & Guardian</h2>
-            <p className="section-desc">Who to contact and where they reside.</p>
+            <h2 className="section-title">{t('section.contact')}</h2>
+            <p className="section-desc">{t('section.contact.desc')}</p>
           </div>
           <div className="form-panel">
             <div className="form-grid">
               <div className="form-group">
-                <label className="form-label">Guardian name</label>
-                <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="form-control" placeholder="Enter guardian name" required />
+                <label className="form-label">{t('label.guardianName')}</label>
+                <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="form-control" placeholder={t('ph.guardianName')} required />
               </div>
               <div className="form-group">
-                <label className="form-label">Contact number</label>
-                <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="form-control" placeholder="Enter contact number" required />
+                <label className="form-label">{t('label.contactNumber')}</label>
+                <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="form-control" placeholder={t('ph.contactNumber')} required />
               </div>
             </div>
             <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label">Full Address</label>
-              <input type="text" name="address" value={formData.address} onChange={handleChange} className="form-control" placeholder="Enter full address" required />
+              <label className="form-label">{t('label.address')}</label>
+              <input type="text" name="address" value={formData.address} onChange={handleChange} className="form-control" placeholder={t('ph.address')} required />
             </div>
           </div>
         </div>
@@ -165,18 +167,18 @@ const AddChildPage = () => {
         {/* Additional Info Section */}
         <div className="split-layout">
           <div>
-            <h2 className="section-title">Additional Info</h2>
-            <p className="section-desc">Educational background and medical notes.</p>
+            <h2 className="section-title">{t('section.additional')}</h2>
+            <p className="section-desc">{t('section.additional.desc')}</p>
           </div>
           <div className="form-panel">
             <div className="form-grid">
               <div className="form-group" style={{ marginBottom: 0 }}>
-                <label className="form-label">Education level</label>
-                <input type="text" name="educationLevel" value={formData.educationLevel} onChange={handleChange} className="form-control" placeholder="Enter education level" />
+                <label className="form-label">{t('label.educationLevel')}</label>
+                <input type="text" name="educationLevel" value={formData.educationLevel} onChange={handleChange} className="form-control" placeholder={t('ph.educationLevel')} />
               </div>
               <div className="form-group" style={{ marginBottom: 0 }}>
-                <label className="form-label">Medical conditions</label>
-                <input type="text" name="medicalConditions" value={formData.medicalConditions} onChange={handleChange} className="form-control" placeholder="Enter medical conditions" />
+                <label className="form-label">{t('label.medicalConditions')}</label>
+                <input type="text" name="medicalConditions" value={formData.medicalConditions} onChange={handleChange} className="form-control" placeholder={t('ph.medicalConditions')} />
               </div>
             </div>
           </div>
@@ -187,29 +189,29 @@ const AddChildPage = () => {
         {/* Allocations Section */}
         <div className="split-layout">
           <div>
-            <h2 className="section-title">Initial Help</h2>
-            <p className="section-desc">Assign help categories right away.</p>
+            <h2 className="section-title">{t('section.help')}</h2>
+            <p className="section-desc">{t('section.help.desc')}</p>
           </div>
           <div className="form-panel">
             {formData.allocations.length === 0 ? (
-              <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px' }}>No help added yet.</p>
+              <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px' }}>{t('msg.noHelp')}</p>
             ) : (
               <div>
                 {formData.allocations.map((alloc, index) => (
                   <div key={index} className="allocation-row">
                     <div className="form-group" style={{ marginBottom: 0 }}>
-                      <label className="form-label">Item</label>
+                      <label className="form-label">{t('label.item')}</label>
                       <input 
                         type="text"
                         value={alloc.item} 
                         onChange={(e) => handleAllocationChange(index, 'item', e.target.value)} 
                         className="form-control"
-                        placeholder="Enter item name"
+                        placeholder={t('ph.item')}
                         required
                       />
                     </div>
                     <div className="form-group" style={{ marginBottom: 0, width: '100px' }}>
-                      <label className="form-label">Quantity</label>
+                      <label className="form-label">{t('label.quantity')}</label>
                       <input 
                         type="number" 
                         value={alloc.quantity || 1} 
@@ -220,7 +222,7 @@ const AddChildPage = () => {
                       />
                     </div>
                     <div className="form-group" style={{ marginBottom: 0 }}>
-                      <label className="form-label">Date</label>
+                      <label className="form-label">{t('label.date')}</label>
                       <input 
                         type="date" 
                         value={alloc.date} 
@@ -238,7 +240,7 @@ const AddChildPage = () => {
             )}
             
             <button type="button" onClick={handleAddAllocation} className="btn btn-secondary">
-              <Plus size={16} /> Add help
+              <Plus size={16} /> {t('btn.addHelp')}
             </button>
           </div>
         </div>
@@ -246,7 +248,7 @@ const AddChildPage = () => {
         {/* Submit Actions */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '48px' }}>
           <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-            {isSubmitting ? 'Processing...' : 'Complete Form'}
+            {isSubmitting ? t('btn.submitting') : t('btn.submit')}
           </button>
         </div>
 
