@@ -1,6 +1,16 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, ReactNode } from 'react';
 
-const LanguageContext = createContext();
+interface LanguageContextType {
+  language: string;
+  setLanguage: (lang: string) => void;
+  t: (key: string, defaultValue?: string) => string;
+}
+
+const LanguageContext = createContext<LanguageContextType>({
+  language: 'mr',
+  setLanguage: () => {},
+  t: (key) => key,
+});
 
 const translations = {
   en: {
@@ -158,13 +168,13 @@ const translations = {
   }
 };
 
-export const LanguageProvider = ({ children }) => {
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState(() => {
-    return localStorage.getItem('appLanguage') || 'mr';
+    return sessionStorage.getItem('appLanguage') || 'mr';
   });
 
   React.useEffect(() => {
-    localStorage.setItem('appLanguage', language);
+    sessionStorage.setItem('appLanguage', language);
   }, [language]);
 
   const t = (key) => {

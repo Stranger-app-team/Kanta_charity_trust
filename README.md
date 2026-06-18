@@ -1,3 +1,15 @@
+# NGO website for Kanta Trust
+
+This is a code bundle for NGO website for Kanta Trust. The original project is available at https://www.figma.com/design/HMIXWWZ4NctOGzZtfEtuo3/NGO-website-for-Kanta-Trust.
+
+## Running the code
+
+Run `npm i` to install the dependencies.
+
+Run `npm run dev` to start the development server.
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
