@@ -92,7 +92,7 @@ const AddChildPage = () => {
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '32px' }}>
         <img src={logo} alt="Kanta Charitable Trust Logo" style={{ width: '64px', height: 'auto' }} />
         <div>
-          <h1 className="page-title" style={{ marginBottom: '4px' }}>Child Application Form</h1>
+          <h1 className="page-title" style={{ marginBottom: '4px' }}>Kanta Charitable Trust</h1>
           <p className="page-subtitle" style={{ marginBottom: 0 }}>Fill out personal details and assign initial help items.</p>
         </div>
       </div>
@@ -112,11 +112,11 @@ const AddChildPage = () => {
             <div className="form-grid">
               <div className="form-group">
                 <label className="form-label">First name</label>
-                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="form-control" placeholder="Jane" required />
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="form-control" placeholder="Enter first name" required />
               </div>
               <div className="form-group">
                 <label className="form-label">Last name</label>
-                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="form-control" placeholder="Doe" required />
+                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="form-control" placeholder="Enter last name" required />
               </div>
               <div className="form-group">
                 <label className="form-label">Date of birth</label>
@@ -146,16 +146,16 @@ const AddChildPage = () => {
             <div className="form-grid">
               <div className="form-group">
                 <label className="form-label">Guardian name</label>
-                <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="form-control" placeholder="John Doe" required />
+                <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="form-control" placeholder="Enter guardian name" required />
               </div>
               <div className="form-group">
                 <label className="form-label">Contact number</label>
-                <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="form-control" placeholder="+1 (555) 000-0000" required />
+                <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="form-control" placeholder="Enter contact number" required />
               </div>
             </div>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label">Full Address</label>
-              <input type="text" name="address" value={formData.address} onChange={handleChange} className="form-control" placeholder="123 Main St, Apt 4B" required />
+              <input type="text" name="address" value={formData.address} onChange={handleChange} className="form-control" placeholder="Enter full address" required />
             </div>
           </div>
         </div>
@@ -172,11 +172,11 @@ const AddChildPage = () => {
             <div className="form-grid">
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Education level</label>
-                <input type="text" name="educationLevel" value={formData.educationLevel} onChange={handleChange} className="form-control" placeholder="E.g. Grade 5" />
+                <input type="text" name="educationLevel" value={formData.educationLevel} onChange={handleChange} className="form-control" placeholder="Enter education level" />
               </div>
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Medical conditions</label>
-                <input type="text" name="medicalConditions" value={formData.medicalConditions} onChange={handleChange} className="form-control" placeholder="None" />
+                <input type="text" name="medicalConditions" value={formData.medicalConditions} onChange={handleChange} className="form-control" placeholder="Enter medical conditions" />
               </div>
             </div>
           </div>
@@ -204,7 +204,7 @@ const AddChildPage = () => {
                         value={alloc.item} 
                         onChange={(e) => handleAllocationChange(index, 'item', e.target.value)} 
                         className="form-control"
-                        placeholder="Item name"
+                        placeholder="Enter item name"
                         required
                       />
                     </div>
