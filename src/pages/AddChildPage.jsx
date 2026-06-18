@@ -11,6 +11,7 @@ const AddChildPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [showAdditional, setShowAdditional] = useState(false);
   
   const [formData, setFormData] = useState({
     firstName: '',
@@ -56,7 +57,12 @@ const AddChildPage = () => {
     setError('');
     setSuccess('');
 
-    const cleanedAllocations = formData.allocations.filter(a => a.item && a.date);
+    const cleanedAllocations = formData.allocations
+      .filter(a => a.item)
+      .map(a => ({
+        item: a.item,
+        quantity: parseInt(a.quantity, 10) || 1
+      }));
     const payload = { ...formData, allocations: cleanedAllocations };
 
     try {
@@ -110,33 +116,66 @@ const AddChildPage = () => {
             <h2 className="section-title">{t('section.personal')}</h2>
             <p className="section-desc">{t('section.personal.desc')}</p>
           </div>
-          <div className="form-panel">
-            <div className="form-grid">
-              <div className="form-group">
-                <label className="form-label">{t('label.firstName')}</label>
-                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="form-control" placeholder={t('ph.firstName')} required />
-              </div>
-              <div className="form-group">
-                <label className="form-label">{t('label.lastName')}</label>
-                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="form-control" placeholder={t('ph.lastName')} required />
-              </div>
-              <div className="form-group">
-                <label className="form-label">{t('label.dob')}</label>
-                <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} className="form-control" required />
-              </div>
-              <div className="form-group">
-                <label className="form-label">{t('label.gender')}</label>
-                <select name="gender" value={formData.gender} onChange={handleChange} className="form-control" required>
-                  <option value="Male">{t('gender.male')}</option>
-                  <option value="Female">{t('gender.female')}</option>
-                  <option value="Other">{t('gender.other')}</option>
-                </select>
+          <div>
+            <div className="form-panel" style={{ marginBottom: !showAdditional ? '12px' : '0' }}>
+              <div className="form-grid">
+                <div className="form-group">
+                  <label className="form-label">{t('label.firstName')}</label>
+                  <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="form-control" placeholder={t('ph.firstName')} required />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">{t('label.lastName')}</label>
+                  <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="form-control" placeholder={t('ph.lastName')} required />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">{t('label.contactNumber')}</label>
+                  <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="form-control" placeholder={t('ph.contactNumber')} required />
+                </div>
               </div>
             </div>
+
+            {!showAdditional && (
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <button 
+                  type="button" 
+                  className="btn btn-ghost" 
+                  style={{ fontSize: '13px', padding: '6px 12px' }}
+                  onClick={() => setShowAdditional(true)}
+                >
+                  <Plus size={14} style={{ marginRight: '4px' }} /> {t('btn.additionalInfo')}
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="divider"></div>
+        {showAdditional && (
+          <>
+            <div className="divider"></div>
+
+            {/* Extended Details Section */}
+            <div className="split-layout">
+              <div>
+                <h2 className="section-title">{t('section.extended')}</h2>
+                <p className="section-desc">{t('section.extended.desc')}</p>
+              </div>
+              <div className="form-panel">
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">{t('label.dob')}</label>
+                    <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} className="form-control" />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">{t('label.gender')}</label>
+                    <select name="gender" value={formData.gender} onChange={handleChange} className="form-control">
+                      <option value="Male">{t('gender.male')}</option>
+                      <option value="Female">{t('gender.female')}</option>
+                      <option value="Other">{t('gender.other')}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         {/* Contact Information Section */}
         <div className="split-layout">
@@ -148,16 +187,12 @@ const AddChildPage = () => {
             <div className="form-grid">
               <div className="form-group">
                 <label className="form-label">{t('label.guardianName')}</label>
-                <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="form-control" placeholder={t('ph.guardianName')} required />
-              </div>
-              <div className="form-group">
-                <label className="form-label">{t('label.contactNumber')}</label>
-                <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="form-control" placeholder={t('ph.contactNumber')} required />
+                <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="form-control" placeholder={t('ph.guardianName')} />
               </div>
             </div>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label">{t('label.address')}</label>
-              <input type="text" name="address" value={formData.address} onChange={handleChange} className="form-control" placeholder={t('ph.address')} required />
+              <input type="text" name="address" value={formData.address} onChange={handleChange} className="form-control" placeholder={t('ph.address')} />
             </div>
           </div>
         </div>
@@ -244,6 +279,14 @@ const AddChildPage = () => {
             </button>
           </div>
         </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '32px' }}>
+          <button type="button" className="btn btn-ghost" onClick={() => setShowAdditional(false)}>
+            {t('btn.hideAdditionalInfo')}
+          </button>
+        </div>
+          </>
+        )}
 
         {/* Submit Actions */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '48px' }}>

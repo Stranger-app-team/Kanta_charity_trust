@@ -39,6 +39,10 @@ const translations = {
     'msg.success': 'Form submitted successfully.',
     'msg.errorSubmit': 'Failed to submit form.',
     'msg.errorNetwork': 'Network error occurred while submitting.',
+    'btn.additionalInfo': 'Additional Info',
+    'btn.hideAdditionalInfo': 'Hide Additional Info',
+    'section.extended': 'Extended Details',
+    'section.extended.desc': 'Other basic information.',
     
     // Placeholders
     'ph.firstName': 'Enter first name',
@@ -86,6 +90,10 @@ const translations = {
     'msg.success': 'अर्ज यशस्वीरित्या जमा झाला.',
     'msg.errorSubmit': 'अर्ज जमा करण्यात त्रुटी.',
     'msg.errorNetwork': 'नेटवर्क त्रुटी आली.',
+    'btn.additionalInfo': 'अतिरिक्त माहिती',
+    'btn.hideAdditionalInfo': 'अतिरिक्त माहिती लपवा',
+    'section.extended': 'विस्तारित माहिती',
+    'section.extended.desc': 'इतर मूलभूत माहिती.',
     
     // Placeholders
     'ph.firstName': 'पहिले नाव टाका',
@@ -133,6 +141,10 @@ const translations = {
     'msg.success': 'फॉर्म सफलतापूर्वक जमा किया गया।',
     'msg.errorSubmit': 'फॉर्म जमा करने में विफल।',
     'msg.errorNetwork': 'नेटवर्क त्रुटि हुई।',
+    'btn.additionalInfo': 'अतिरिक्त जानकारी',
+    'btn.hideAdditionalInfo': 'अतिरिक्त जानकारी छिपाएं',
+    'section.extended': 'विस्तृत जानकारी',
+    'section.extended.desc': 'अन्य बुनियादी जानकारी।',
 
     // Placeholders
     'ph.firstName': 'पहला नाम दर्ज करें',
