@@ -143,7 +143,7 @@ const AddChildPage = () => {
                   <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.firstName')} required />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm font-medium text-gray-700">{t('label.lastName')} <span className="text-red-500">*</span></label>
+                  <label className="text-sm font-medium text-gray-700">{t('label.lastName')} </label>
                   <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.lastName')} required />
                 </div>
                 <div className="flex flex-col gap-1">
