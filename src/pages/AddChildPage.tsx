@@ -137,10 +137,14 @@ const AddChildPage = () => {
           </div>
           <div>
             <div className={`bg-white border border-gray-100 border-t-4 border-t-[#2E67B2] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow ${!showAdditional ? 'mb-3' : ''}`}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-700">{t('label.firstName')} <span className="text-red-500">*</span></label>
                   <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.firstName')} required />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-sm font-medium text-gray-700">{t('label.guardianName')}</label>
+                  <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.guardianName')} />
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-700">{t('label.lastName')} </label>
@@ -153,10 +157,6 @@ const AddChildPage = () => {
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-700">{t('label.village')}</label>
                   <input type="text" name="villageName" value={formData.villageName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.village')} />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-sm font-medium text-gray-700">{t('label.guardianName')}</label>
-                  <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.guardianName')} />
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-700">{t('label.occupation')}</label>
