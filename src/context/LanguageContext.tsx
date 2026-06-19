@@ -69,7 +69,8 @@ const translations = {
     'ph.medicalConditions': 'Enter medical conditions',
     'ph.village': 'Enter village name',
     'ph.occupation': 'Enter occupation',
-    'ph.item': 'Enter item name'
+    'ph.item': 'Enter item name',
+    'footer.bottom_banner': 'Let\'s come together and bring holistic development to our village and taluka!'
   },
   mr: {
     ...landingTranslations.mr,
@@ -125,7 +126,8 @@ const translations = {
     'ph.medicalConditions': 'वैद्यकीय समस्या टाका',
     'ph.village': 'गावाचे नाव टाका',
     'ph.occupation': 'व्यवसाय टाका',
-    'ph.item': 'वस्तूचे नाव टाका'
+    'ph.item': 'वस्तूचे नाव टाका',
+    'footer.bottom_banner': 'चला, एकत्र येऊन आपल्या गावाचा आणि तालुक्याचा सर्वांगीण विकास घडवूया !'
   },
   hi: {
     ...landingTranslations.hi,
@@ -181,7 +183,8 @@ const translations = {
     'ph.medicalConditions': 'चिकित्सा स्थिति दर्ज करें',
     'ph.village': 'गाँव का नाम दर्ज करें',
     'ph.occupation': 'व्यवसाय दर्ज करें',
-    'ph.item': 'वस्तु का नाम दर्ज करें'
+    'ph.item': 'वस्तु का नाम दर्ज करें',
+    'footer.bottom_banner': 'आइए, एक साथ आएं और अपने गांव और तालुका का समग्र विकास करें!'
   }
 };
 
@@ -194,8 +197,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     sessionStorage.setItem('appLanguage', language);
   }, [language]);
 
-  const t = (key) => {
-    return translations[language][key] || translations['en'][key] || key;
+  const t = (key: string) => {
+    return (translations as any)[language]?.[key] || (translations as any)['en']?.[key] || key;
   };
 
   return (

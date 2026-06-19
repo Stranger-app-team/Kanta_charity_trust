@@ -177,16 +177,19 @@ export default function Footer() {
             </motion.div>
           </div>
 
-          {/* Marathi Motto */}
+          {/* Marathi Motto & Banner */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 text-center"
+            className="mt-6 text-center space-y-3"
           >
             <p className="text-xl md:text-2xl font-semibold text-[#F2C533]">
               "सेवा हाच खरा धर्म | सेवा हीच खरी पूजा"
+            </p>
+            <p className="text-lg md:text-xl text-white/90 font-medium">
+              {t('footer.bottom_banner')}
             </p>
           </motion.div>
         </div>

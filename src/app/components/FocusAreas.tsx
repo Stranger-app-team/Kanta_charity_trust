@@ -70,17 +70,7 @@ export default function FocusAreas() {
       gradient: 'from-[#2E67B2] to-[#E34298]',
       image: 'https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB3ZWxmYXJlJTIwdm9sdW50ZWVycyUyMGhlbHBpbmd8ZW58MXx8fHwxNzgxNjk0OTgzfDA&ixlib=rb-4.1.0&q=80&w=1080',
     },
-    {
-      icon: Sparkles,
-      title: t('focus.women_title'),
-      items: [
-        t('focus.women_1'),
-        t('focus.women_2'),
-        t('focus.women_3'),
-      ],
-      gradient: 'from-[#E34298] to-[#2E67B2]',
-      image: 'https://images.unsplash.com/photo-1587538018365-2a1f8b544c08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGVtcG93ZXJtZW50JTIwd29ya3Nob3AlMjBpbmRpYXxlbnwxfHx8fDE3ODE2OTQ5ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    },
+
   ];
 
   return (
@@ -103,7 +93,7 @@ export default function FocusAreas() {
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
           {focusAreas.map((area, index) => {
             const Icon = area.icon;
             return (
@@ -114,8 +104,10 @@ export default function FocusAreas() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ${
-                  index === 0 || index === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+                className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 lg:col-span-2 ${
+                  index === 3 ? 'lg:col-start-2' : ''
+                } ${
+                  index === 4 ? 'md:col-span-2 lg:col-span-2' : ''
                 }`}
               >
                 {/* Background Image */}
