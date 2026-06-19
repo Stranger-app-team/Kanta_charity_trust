@@ -75,7 +75,7 @@ export default function Navigation() {
               </button>
             ))}
             <button
-              onClick={() => { window.location.href = '/register'; }}
+              onClick={() => { window.open('/register', '_blank'); }}
               className="px-5 py-1.5 bg-gradient-to-r from-[#28A34A] to-[#2E67B2] text-white rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all"
             >
               Form
@@ -104,7 +104,7 @@ export default function Navigation() {
               </button>
             ))}
             <button
-              onClick={() => { window.location.href = '/register'; }}
+              onClick={() => { window.open('/register', '_blank'); }}
               className="block w-[calc(100%-2rem)] mx-4 my-2 text-center px-4 py-2 bg-gradient-to-r from-[#28A34A] to-[#2E67B2] text-white rounded-full font-semibold hover:shadow-md transition-all"
             >
               Form

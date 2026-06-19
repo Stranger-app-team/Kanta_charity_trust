@@ -106,7 +106,7 @@ const AddChildPage = () => {
           </div>
         </div>
 
-        {/* Language and Close controls */}
+        {/* Language controls */}
         <div className="flex items-center self-end sm:self-auto gap-3">
           <select 
             value={language} 
@@ -117,13 +117,6 @@ const AddChildPage = () => {
             <option value="mr">मराठी</option>
             <option value="hi">हिंदी</option>
           </select>
-          <button
-            onClick={() => navigate('/')}
-            className="p-1 text-red-500 hover:text-red-700 transition-colors"
-            aria-label="Close form"
-          >
-            <X size={24} />
-          </button>
         </div>
       </div>
 
