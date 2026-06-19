@@ -139,20 +139,28 @@ const AddChildPage = () => {
             <div className={`bg-white border border-gray-100 border-t-4 border-t-[#2E67B2] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow ${!showAdditional ? 'mb-3' : ''}`}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm font-medium text-gray-700">{t('label.firstName')}</label>
+                  <label className="text-sm font-medium text-gray-700">{t('label.firstName')} <span className="text-red-500">*</span></label>
                   <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.firstName')} required />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm font-medium text-gray-700">{t('label.lastName')}</label>
+                  <label className="text-sm font-medium text-gray-700">{t('label.lastName')} <span className="text-red-500">*</span></label>
                   <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.lastName')} required />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm font-medium text-gray-700">{t('label.contactNumber')}</label>
+                  <label className="text-sm font-medium text-gray-700">{t('label.contactNumber')} <span className="text-red-500">*</span></label>
                   <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.contactNumber')} required />
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-700">{t('label.village')}</label>
-                  <input type="text" name="villageName" value={formData.villageName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.village')} required />
+                  <input type="text" name="villageName" value={formData.villageName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.village')} />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-sm font-medium text-gray-700">{t('label.guardianName')}</label>
+                  <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.guardianName')} />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-sm font-medium text-gray-700">{t('label.occupation')}</label>
+                  <input type="text" name="occupation" value={formData.occupation} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.occupation')} />
                 </div>
               </div>
             </div>
@@ -196,32 +204,14 @@ const AddChildPage = () => {
                     </select>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Contact Information Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
-              <div>
-                <h2 className="text-lg font-bold text-[#F59A34] mb-1">{t('section.contact')}</h2>
-                <p className="text-sm text-gray-500">{t('section.contact.desc')}</p>
-              </div>
-              <div className="bg-white border border-gray-100 border-t-4 border-t-[#F59A34] rounded-xl p-6 shadow-sm flex flex-col gap-4 hover:shadow-md transition-shadow">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1">
-                    <label className="text-sm font-medium text-gray-700">{t('label.guardianName')}</label>
-                    <input type="text" name="guardianName" value={formData.guardianName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.guardianName')} />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <label className="text-sm font-medium text-gray-700">{t('label.occupation')}</label>
-                    <input type="text" name="occupation" value={formData.occupation} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.occupation')} />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 mt-4">
                   <label className="text-sm font-medium text-gray-700">{t('label.address')}</label>
                   <input type="text" name="address" value={formData.address} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.address')} />
                 </div>
               </div>
             </div>
+
+
 
             <div className="h-px bg-gray-200 w-full"></div>
 
