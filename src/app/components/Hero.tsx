@@ -182,6 +182,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
+              {/* 
               <button
                 onClick={() => scrollToSection('donate')}
                 className="px-8 py-4 bg-gradient-to-r from-[#F59A34] to-[#E34298] text-white rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
@@ -194,6 +195,7 @@ export default function Hero() {
               >
                 {t('hero.btn_volunteer')}
               </button>
+              */}
               <button
                 onClick={() => scrollToSection('programs')}
                 className="px-8 py-4 bg-white/20 backdrop-blur-md text-white border-2 border-white rounded-full font-semibold text-lg hover:bg-white/30 hover:scale-105 transition-all"
