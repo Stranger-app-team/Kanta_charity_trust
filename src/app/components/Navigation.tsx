@@ -26,11 +26,11 @@ export default function Navigation() {
 
   const navLinks = [
     { name: t('nav.about'), id: 'about' },
-    { name: t('nav.programs'), id: 'programs' },
-    { name: t('nav.gallery'), id: 'gallery' },
-    { name: t('nav.events'), id: 'events' },
-    { name: t('nav.volunteer'), id: 'volunteer' },
-    { name: t('nav.donate'), id: 'donate' },
+    // { name: t('nav.programs'), id: 'programs' },
+    // { name: t('nav.gallery'), id: 'gallery' },
+    // { name: t('nav.events'), id: 'events' },
+    // { name: t('nav.volunteer'), id: 'volunteer' },
+    // { name: t('nav.donate'), id: 'donate' },
     { name: t('nav.contact'), id: 'contact' },
   ];
 

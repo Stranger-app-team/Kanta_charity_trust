@@ -64,7 +64,7 @@ export default function Footer() {
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
                 return (
@@ -79,7 +79,7 @@ export default function Footer() {
                   </a>
                 );
               })}
-            </div>
+            </div> */}
           </motion.div>
 
           {/* Column 2 - {t('footer.quick')} */}
@@ -89,7 +89,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-xl font-bold mb-6">{t('footer.quick')}</h4>
+            {/* <h4 className="text-xl font-bold mb-6">{t('footer.quick')}</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.id}>
@@ -102,7 +102,7 @@ export default function Footer() {
                   </button>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </motion.div>
 
           {/* Column 3 - {t('footer.news')} */}

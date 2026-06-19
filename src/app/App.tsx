@@ -28,13 +28,15 @@ export default function App() {
         <About />
         <FoundersMessage />
         <FocusAreas />
+        {/* 
         <ImpactStats />
         <Programs />
         <Gallery />
         <SuccessStories />
         <Events />
         <Donation />
-        <Volunteer />
+        <Volunteer /> 
+        */}
         <Contact />
       </main>
       <Footer />
