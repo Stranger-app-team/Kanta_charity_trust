@@ -9,83 +9,86 @@ import {
   Users,
   ChevronRight,
 } from 'lucide-react';
-
-const programs = [
-  {
-    icon: GraduationCap,
-    title: 'Education Program',
-    description: 'Supporting students with scholarships, school supplies, and educational resources',
-    details: [
-      'Scholarship programs for underprivileged students',
-      'Distribution of school supplies and books',
-      'Digital learning initiatives',
-      'After-school tutoring and mentorship',
-    ],
-    gradient: 'from-[#2E67B2] to-[#28A34A]',
-  },
-  {
-    icon: Heart,
-    title: 'Healthcare Program',
-    description: 'Providing medical assistance and health awareness to communities',
-    details: [
-      'Free medical camps in rural areas',
-      'Medicine distribution programs',
-      'Health awareness workshops',
-      'Emergency medical assistance',
-    ],
-    gradient: 'from-[#E34298] to-[#F59A34]',
-  },
-  {
-    icon: Sparkles,
-    title: 'Women Empowerment Program',
-    description: 'Empowering women through skill development and self-reliance',
-    details: [
-      'Vocational training programs',
-      'Self-help group formation',
-      'Leadership development workshops',
-      'Financial literacy training',
-    ],
-    gradient: 'from-[#F59A34] to-[#F2C533]',
-  },
-  {
-    icon: Sprout,
-    title: 'Farmer Support Program',
-    description: 'Supporting farmers with resources and agricultural guidance',
-    details: [
-      'Agricultural awareness programs',
-      'Modern farming technique training',
-      'Seed and equipment support',
-      'Market linkage assistance',
-    ],
-    gradient: 'from-[#28A34A] to-[#F2C533]',
-  },
-  {
-    icon: Briefcase,
-    title: 'Employment Assistance Program',
-    description: 'Creating employment opportunities through skill development',
-    details: [
-      'Skill development workshops',
-      'Job placement assistance',
-      'Entrepreneurship training',
-      'Career counseling services',
-    ],
-    gradient: 'from-[#2E67B2] to-[#E34298]',
-  },
-  {
-    icon: Users,
-    title: 'Social Development Program',
-    description: 'Building stronger communities through welfare initiatives',
-    details: [
-      'Community infrastructure development',
-      'Disaster relief programs',
-      'Elder care initiatives',
-      'Disability support services',
-    ],
-    gradient: 'from-[#E34298] to-[#2E67B2]',
-  },
-];
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function Programs() {
+  const { t } = useTranslation();
+
+  const programs = [
+    {
+      icon: GraduationCap,
+      title: t('programs.p1_title'),
+      description: t('programs.p1_desc'),
+      details: [
+        'Scholarship programs for underprivileged students',
+        'Distribution of school supplies and books',
+        'Digital learning initiatives',
+        'After-school tutoring and mentorship',
+      ],
+      gradient: 'from-[#2E67B2] to-[#28A34A]',
+    },
+    {
+      icon: Heart,
+      title: t('programs.p2_title'),
+      description: t('programs.p2_desc'),
+      details: [
+        'Free medical camps in rural areas',
+        'Medicine distribution programs',
+        'Health awareness workshops',
+        'Emergency medical assistance',
+      ],
+      gradient: 'from-[#E34298] to-[#F59A34]',
+    },
+    {
+      icon: Sparkles,
+      title: t('programs.p3_title'),
+      description: t('programs.p3_desc'),
+      details: [
+        'Vocational training programs',
+        'Self-help group formation',
+        'Leadership development workshops',
+        'Financial literacy training',
+      ],
+      gradient: 'from-[#F59A34] to-[#F2C533]',
+    },
+    {
+      icon: Sprout,
+      title: t('programs.p4_title'),
+      description: t('programs.p4_desc'),
+      details: [
+        'Agricultural awareness programs',
+        'Modern farming technique training',
+        'Seed and equipment support',
+        'Market linkage assistance',
+      ],
+      gradient: 'from-[#28A34A] to-[#F2C533]',
+    },
+    {
+      icon: Briefcase,
+      title: t('programs.p5_title'),
+      description: t('programs.p5_desc'),
+      details: [
+        'Skill development workshops',
+        'Job placement assistance',
+        'Entrepreneurship training',
+        'Career counseling services',
+      ],
+      gradient: 'from-[#2E67B2] to-[#E34298]',
+    },
+    {
+      icon: Users,
+      title: t('programs.p6_title'),
+      description: t('programs.p6_desc'),
+      details: [
+        'Community infrastructure development',
+        'Disaster relief programs',
+        'Elder care initiatives',
+        'Disability support services',
+      ],
+      gradient: 'from-[#E34298] to-[#2E67B2]',
+    },
+  ];
+
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
@@ -99,11 +102,11 @@ export default function Programs() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Programs & Initiatives
+            {t('programs.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto mb-4"></div>
           <p className="text-xl text-[#1F2937]/70 max-w-2xl mx-auto">
-            Comprehensive programs designed to create lasting impact
+            {t('programs.subtitle')}
           </p>
         </motion.div>
 
@@ -169,7 +172,7 @@ export default function Programs() {
                         isExpanded ? 'text-[#E34298]' : 'text-[#2E67B2]'
                       } group-hover:gap-3 transition-all`}
                     >
-                      {isExpanded ? 'Show Less' : 'Learn More'}
+                      {isExpanded ? t('programs.show_less') : t('programs.learn_more')}
                       <ChevronRight
                         className={`transition-transform ${
                           isExpanded ? 'rotate-90' : ''

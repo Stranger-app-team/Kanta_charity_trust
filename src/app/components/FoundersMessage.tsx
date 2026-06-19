@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function FoundersMessage() {
+  const { t } = useTranslation();
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Background Gradient */}
@@ -17,7 +19,7 @@ export default function FoundersMessage() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Message From The Trust Leadership
+            {t('founders.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto"></div>
         </motion.div>
@@ -50,15 +52,15 @@ export default function FoundersMessage() {
             {/* Message Content */}
             <div className="relative z-10 text-center space-y-6">
               <p className="text-lg md:text-xl text-[#1F2937]/90 leading-relaxed">
-                Kanta Charitable Trust was established with the vision of supporting communities, helping those in need, promoting education, improving healthcare access, supporting farmers, and driving social welfare initiatives.
+                {t('founders.p1')}
               </p>
 
               <p className="text-lg md:text-xl text-[#1F2937]/90 leading-relaxed">
-                Our commitment is to serve humanity with compassion and dedication. We believe that every individual deserves access to basic necessities, opportunities for growth, and the chance to live a dignified life.
+                {t('founders.p2')}
               </p>
 
               <p className="text-lg md:text-xl text-[#1F2937]/90 leading-relaxed">
-                The trust operates without political influence and remains focused solely on social responsibility and community development. Through our various programs and initiatives, we strive to create lasting positive change in the lives of those we serve.
+                {t('founders.p3')}
               </p>
 
               <div className="pt-6">

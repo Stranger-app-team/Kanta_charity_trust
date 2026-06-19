@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Users, Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function Volunteer() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -37,11 +39,11 @@ export default function Volunteer() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Become a Volunteer
+            {t('volunteer.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto mb-4"></div>
           <p className="text-xl text-[#1F2937]/70 max-w-2xl mx-auto">
-            Join our mission to create positive change in communities
+            {t('volunteer.subtitle')}
           </p>
         </motion.div>
 
@@ -61,8 +63,8 @@ export default function Volunteer() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <h3 className="text-3xl font-bold mb-2">Make a Difference</h3>
-                <p className="text-lg">Join thousands of volunteers creating positive impact</p>
+                <h3 className="text-3xl font-bold mb-2">{t('volunteer.box1_title')}</h3>
+                <p className="text-lg">{t('volunteer.box1_desc')}</p>
               </div>
             </div>
 
@@ -73,9 +75,9 @@ export default function Volunteer() {
                   <Users className="text-white" size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#1F2937] mb-1">Community Impact</h4>
+                  <h4 className="font-bold text-[#1F2937] mb-1">{t('volunteer.b1_title')}</h4>
                   <p className="text-[#1F2937]/70 text-sm">
-                    Work directly with communities and see the impact of your efforts
+                    {t('volunteer.b1_desc')}
                   </p>
                 </div>
               </div>
@@ -85,9 +87,9 @@ export default function Volunteer() {
                   <MessageSquare className="text-white" size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#1F2937] mb-1">Skill Development</h4>
+                  <h4 className="font-bold text-[#1F2937] mb-1">{t('volunteer.b2_title')}</h4>
                   <p className="text-[#1F2937]/70 text-sm">
-                    Learn new skills and gain valuable experience
+                    {t('volunteer.b2_desc')}
                   </p>
                 </div>
               </div>
@@ -103,13 +105,13 @@ export default function Volunteer() {
           >
             <form onSubmit={handleSubmit} className="bg-[#F8FAFC] rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-[#1F2937] mb-6">
-                Volunteer Registration
+                {t('volunteer.form_title')}
               </h3>
 
               {/* Name */}
               <div className="mb-4">
                 <label className="block text-[#1F2937] font-medium mb-2">
-                  Full Name *
+                  {t('volunteer.name')}
                 </label>
                 <div className="relative">
                   <Users className="absolute left-3 top-1/2 -translate-y-1/2 text-[#2E67B2]" size={20} />
@@ -128,7 +130,7 @@ export default function Volunteer() {
               {/* Email */}
               <div className="mb-4">
                 <label className="block text-[#1F2937] font-medium mb-2">
-                  Email Address *
+                  {t('volunteer.email')}
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-[#2E67B2]" size={20} />
@@ -147,7 +149,7 @@ export default function Volunteer() {
               {/* Phone */}
               <div className="mb-4">
                 <label className="block text-[#1F2937] font-medium mb-2">
-                  Phone Number *
+                  {t('volunteer.phone')}
                 </label>
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-[#2E67B2]" size={20} />
@@ -163,10 +165,10 @@ export default function Volunteer() {
                 </div>
               </div>
 
-              {/* City */}
+              {/* {t('volunteer.city')}/}
               <div className="mb-4">
                 <label className="block text-[#1F2937] font-medium mb-2">
-                  City *
+                  {t('volunteer.city')}
                 </label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-[#2E67B2]" size={20} />
@@ -182,10 +184,10 @@ export default function Volunteer() {
                 </div>
               </div>
 
-              {/* Area of Interest */}
+              {/* {t('volunteer.interest')}/}
               <div className="mb-4">
                 <label className="block text-[#1F2937] font-medium mb-2">
-                  Area of Interest *
+                  {t('volunteer.interest')}
                 </label>
                 <select
                   name="interest"
@@ -224,7 +226,7 @@ export default function Volunteer() {
                 type="submit"
                 className="w-full bg-gradient-to-r from-[#2E67B2] to-[#E34298] text-white py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-2 hover:shadow-xl transition-all group"
               >
-                Submit Application
+                {t('volunteer.submit')}
                 <Send className="group-hover:translate-x-1 transition-transform" size={20} />
               </button>
             </form>

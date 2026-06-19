@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
+import { useTranslation } from '../../context/LanguageContext';
 import { Target, Eye } from 'lucide-react';
 
 export default function About() {
+  const { t } = useTranslation();
   return (
     <section id="about" className="py-16 md:py-24 bg-[#F8FAFC]">
       <div className="container mx-auto px-4 lg:px-8">
@@ -52,43 +54,43 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-6">
-              About Us
+              {t('about.title')}
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mb-8"></div>
 
             <p className="text-lg text-[#1F2937]/80 mb-6 leading-relaxed">
-              Kanta Charitable Trust is a social welfare organization dedicated to uplifting communities through education, healthcare, employment support, farmer assistance, women empowerment, and various community development initiatives.
+              {t('about.desc1')}
             </p>
 
             <p className="text-lg text-[#1F2937]/80 mb-8 leading-relaxed">
-              The trust works to create positive social impact by helping underprivileged families, supporting rural development, and empowering individuals with opportunities for growth and self-reliance.
+              {t('about.desc2')}
             </p>
 
-            {/* Vision */}
+            {/* {t('about.vision_title')} */}
             <div className="bg-white rounded-xl p-6 shadow-lg mb-6 hover:shadow-xl transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="bg-gradient-to-br from-[#2E67B2] to-[#28A34A] p-3 rounded-lg">
                   <Eye className="text-white" size={28} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">Vision</h3>
+                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">{t('about.vision_title')}</h3>
                   <p className="text-[#1F2937]/80">
-                    Creating stronger communities through service, dedication, trust, and development.
+                    {t('about.vision_desc')}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Mission */}
+            {/* {t('about.mission_title')} */}
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="bg-gradient-to-br from-[#F59A34] to-[#E34298] p-3 rounded-lg">
                   <Target className="text-white" size={28} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">Mission</h3>
+                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">{t('about.mission_title')}</h3>
                   <p className="text-[#1F2937]/80">
-                    To support education, healthcare, employment opportunities, farmer welfare, and social development initiatives for a better tomorrow.
+                    {t('about.mission_desc')}
                   </p>
                 </div>
               </div>

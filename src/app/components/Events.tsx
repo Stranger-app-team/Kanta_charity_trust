@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 
 const events = [
   {
@@ -59,6 +60,7 @@ const events = [
 ];
 
 export default function Events() {
+  const { t } = useTranslation();
   return (
     <section id="events" className="py-16 md:py-24 bg-[#F8FAFC]">
       <div className="container mx-auto px-4 lg:px-8">
@@ -70,11 +72,11 @@ export default function Events() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Events & Activities
+            {t('events.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto mb-4"></div>
           <p className="text-xl text-[#1F2937]/70 max-w-2xl mx-auto">
-            Join us in making a difference
+            {t('events.subtitle')}
           </p>
         </motion.div>
 
@@ -138,7 +140,7 @@ export default function Events() {
 
                   {/* CTA */}
                   <button className={`w-full bg-gradient-to-r ${event.gradient} text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all group-hover:gap-4`}>
-                    Register Now
+                    {t('events.register')}
                     <ArrowRight size={20} />
                   </button>
                 </div>

@@ -2,48 +2,53 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import logoImage from '../../imports/png_kct.png';
+import { useTranslation } from '../../context/LanguageContext';
 
-const heroSlides = [
-  {
-    image: 'https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGVkdWNhdGlvbiUyMGNsYXNzcm9vbSUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4MXww&ixlib=rb-4.1.0&q=80&w=1080',
-    title: 'Child Education',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1609252509229-364936a1d1a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwaGVhbHRoJTIwY2FtcCUyMHJ1cmFsJTIwaW5kaWF8ZW58MXx8fHwxNzgxNjk0OTgxfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    title: 'Medical Support',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1587538018365-2a1f8b544c08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGVtcG93ZXJtZW50JTIwd29ya3Nob3AlMjBpbmRpYXxlbnwxfHx8fDE3ODE2OTQ5ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    title: 'Women Empowerment',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydXJhbCUyMGRldmVsb3BtZW50JTIwZmFybWluZyUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4Mnww&ixlib=rb-4.1.0&q=80&w=1080',
-    title: 'Rural Development',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB3ZWxmYXJlJTIwdm9sdW50ZWVycyUyMGhlbHBpbmd8ZW58MXx8fHwxNzgxNjk0OTgzfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    title: 'Community Welfare',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1543333995-a78aea2eee50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXNhYmlsaXR5JTIwc3VwcG9ydCUyMHdoZWVsY2hhaXIlMjBjYXJlfGVufDF8fHx8MTc4MTY5NDk4M3ww&ixlib=rb-4.1.0&q=80&w=1080',
-    title: 'Disability Support',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1454875392665-2ac2c85e8d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwY2FyZSUyMHNlbmlvciUyMHN1cHBvcnR8ZW58MXx8fHwxNzgxNjk0OTg0fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    title: 'Elder Care',
-  },
-];
 
-const animatedTexts = [
-  'Education For Every Child',
-  'Healthcare For Every Family',
-  'Empowering Women',
-  'Supporting Farmers',
-  'Building Better Communities',
-  'Creating Sustainable Futures',
-];
 
 export default function Hero() {
+  const { t } = useTranslation();
+
+  const heroSlides = [
+    {
+      image: 'https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGVkdWNhdGlvbiUyMGNsYXNzcm9vbSUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4MXww&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t('hero.slides.edu'),
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1609252509229-364936a1d1a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwaGVhbHRoJTIwY2FtcCUyMHJ1cmFsJTIwaW5kaWF8ZW58MXx8fHwxNzgxNjk0OTgxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t('hero.slides.health'),
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1587538018365-2a1f8b544c08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGVtcG93ZXJtZW50JTIwd29ya3Nob3AlMjBpbmRpYXxlbnwxfHx8fDE3ODE2OTQ5ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t('hero.slides.women'),
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydXJhbCUyMGRldmVsb3BtZW50JTIwZmFybWluZyUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4Mnww&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t('hero.slides.rural'),
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB3ZWxmYXJlJTIwdm9sdW50ZWVycyUyMGhlbHBpbmd8ZW58MXx8fHwxNzgxNjk0OTgzfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t('hero.slides.comm'),
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1543333995-a78aea2eee50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXNhYmlsaXR5JTIwc3VwcG9ydCUyMHdoZWVsY2hhaXIlMjBjYXJlfGVufDF8fHx8MTc4MTY5NDk4M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t('hero.slides.disability'),
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1454875392665-2ac2c85e8d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwY2FyZSUyMHNlbmlvciUyMHN1cHBvcnR8ZW58MXx8fHwxNzgxNjk0OTg0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: t('hero.slides.elder'),
+    },
+  ];
+
+  const animatedTexts = [
+    t('hero.anim.edu'),
+    t('hero.anim.health'),
+    t('hero.anim.women'),
+    t('hero.anim.farmers'),
+    t('hero.anim.comm'),
+    t('hero.anim.futures'),
+  ];
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
@@ -136,7 +141,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4"
             >
-              KANTA CHARITABLE TRUST
+              {t('hero.title')}
             </motion.h1>
 
             {/* Marathi Subheading */}
@@ -146,7 +151,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl lg:text-3xl text-[#F2C533] mb-6"
             >
-              सेवा, समर्पण आणि विकासाची नवी सुरुवात
+              {t('hero.subtitle')}
             </motion.p>
 
             {/* Animated Text Rotation */}
@@ -181,25 +186,25 @@ export default function Hero() {
                 onClick={() => scrollToSection('donate')}
                 className="px-8 py-4 bg-gradient-to-r from-[#F59A34] to-[#E34298] text-white rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
               >
-                Donate Now
+                {t('hero.btn_donate')}
               </button>
               <button
                 onClick={() => scrollToSection('volunteer')}
                 className="px-8 py-4 bg-gradient-to-r from-[#28A34A] to-[#2E67B2] text-white rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
               >
-                Become Volunteer
+                {t('hero.btn_volunteer')}
               </button>
               <button
                 onClick={() => scrollToSection('programs')}
                 className="px-8 py-4 bg-white/20 backdrop-blur-md text-white border-2 border-white rounded-full font-semibold text-lg hover:bg-white/30 hover:scale-105 transition-all"
               >
-                Support a Cause
+                {t('hero.btn_support')}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="px-8 py-4 bg-white/20 backdrop-blur-md text-white border-2 border-white rounded-full font-semibold text-lg hover:bg-white/30 hover:scale-105 transition-all"
               >
-                Contact Us
+                {t('hero.btn_contact')}
               </button>
             </motion.div>
           </div>

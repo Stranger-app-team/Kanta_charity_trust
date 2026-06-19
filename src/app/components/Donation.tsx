@@ -1,45 +1,48 @@
 import { motion } from 'motion/react';
 import { Heart, GraduationCap, HeartPulse, Building2, Users } from 'lucide-react';
-
-const donationOptions = [
-  {
-    icon: GraduationCap,
-    amount: '₹500',
-    title: 'Education Support',
-    description: 'Help a child with school supplies and books',
-    gradient: 'from-[#2E67B2] to-[#28A34A]',
-  },
-  {
-    icon: Heart,
-    amount: '₹1000',
-    title: 'Food & Essentials',
-    description: 'Provide basic necessities to families in need',
-    gradient: 'from-[#28A34A] to-[#F2C533]',
-  },
-  {
-    icon: HeartPulse,
-    amount: '₹2500',
-    title: 'Medical Assistance',
-    description: 'Support healthcare initiatives and medical camps',
-    gradient: 'from-[#E34298] to-[#F59A34]',
-  },
-  {
-    icon: Building2,
-    amount: '₹5000',
-    title: 'Community Development',
-    description: 'Fund infrastructure and welfare projects',
-    gradient: 'from-[#F59A34] to-[#E34298]',
-  },
-  {
-    icon: Users,
-    amount: '₹10000',
-    title: 'Sponsor A Cause',
-    description: 'Make a significant impact across all programs',
-    gradient: 'from-[#2E67B2] to-[#E34298]',
-  },
-];
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function Donation() {
+  const { t } = useTranslation();
+
+  const donationOptions = [
+    {
+      icon: GraduationCap,
+      amount: '₹500',
+      title: t('donate.p1_title'),
+      description: t('donate.p1_desc'),
+      gradient: 'from-[#2E67B2] to-[#28A34A]',
+    },
+    {
+      icon: Heart,
+      amount: '₹1000',
+      title: t('donate.p2_title'),
+      description: t('donate.p2_desc'),
+      gradient: 'from-[#28A34A] to-[#F2C533]',
+    },
+    {
+      icon: HeartPulse,
+      amount: '₹2500',
+      title: t('donate.p3_title'),
+      description: t('donate.p3_desc'),
+      gradient: 'from-[#E34298] to-[#F59A34]',
+    },
+    {
+      icon: Building2,
+      amount: '₹5000',
+      title: t('donate.p4_title'),
+      description: t('donate.p4_desc'),
+      gradient: 'from-[#F59A34] to-[#E34298]',
+    },
+    {
+      icon: Users,
+      amount: '₹10000',
+      title: t('donate.p5_title'),
+      description: t('donate.p5_desc'),
+      gradient: 'from-[#2E67B2] to-[#E34298]',
+    },
+  ];
+
   return (
     <section id="donate" className="py-16 md:py-24 bg-gradient-to-br from-[#2E67B2] via-[#F59A34] to-[#E34298] relative overflow-hidden">
       {/* Decorative Elements */}
@@ -55,11 +58,11 @@ export default function Donation() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Your Contribution Can Transform Lives
+            {t('donate.title')}
           </h2>
           <div className="w-24 h-1 bg-white mx-auto mb-4"></div>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Every donation makes a difference in someone's life
+            {t('donate.subtitle')}
           </p>
         </motion.div>
 
@@ -117,19 +120,19 @@ export default function Donation() {
         >
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Donate Custom Amount
+              {t('donate.custom_title')}
             </h3>
             <p className="text-white/80 mb-6">
-              Choose your own amount to support our cause
+              {t('donate.custom_desc')}
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <input
                 type="number"
-                placeholder="Enter amount"
+                placeholder="{t('donate.custom_ph')}"
                 className="px-6 py-3 rounded-lg bg-white/20 backdrop-blur-sm text-white placeholder-white/60 border-2 border-white/30 focus:border-white outline-none flex-grow max-w-md"
               />
               <button className="px-8 py-3 bg-white text-[#2E67B2] rounded-lg font-semibold hover:bg-white/90 transition-all shadow-lg hover:shadow-xl">
-                Donate Now
+                {t('donate.btn')}
               </button>
             </div>
           </div>
@@ -144,10 +147,10 @@ export default function Donation() {
           className="text-center mt-12"
         >
           <p className="text-white/90 text-lg">
-            ❤️ All donations are used transparently for community welfare ❤️
+            {t('donate.trust1')}
           </p>
           <p className="text-white/80 mt-2">
-            80G Tax Benefits Available | Receipts Provided
+            {t('donate.trust2')}
           </p>
         </motion.div>
       </div>

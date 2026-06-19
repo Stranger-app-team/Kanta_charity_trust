@@ -1,18 +1,21 @@
 import { motion } from 'motion/react';
-
-const marqueeItems = [
-  '❤️ Seva',
-  '🤝 Samarpan',
-  '📈 Vikas',
-  '⭐ Vishwas',
-  '📚 Education',
-  '🏥 Healthcare',
-  '🌾 Farmers Support',
-  '👩 Women Empowerment',
-  '🌍 Community Welfare',
-];
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function MarqueeBanner() {
+  const { t } = useTranslation();
+
+  const marqueeItems = [
+    t('marquee.seva'),
+    t('marquee.samarpan'),
+    t('marquee.vikas'),
+    t('marquee.vishwas'),
+    t('marquee.education'),
+    t('marquee.healthcare'),
+    t('marquee.farmers'),
+    t('marquee.women'),
+    t('marquee.community'),
+  ];
+
   // Duplicate the items for seamless loop
   const duplicatedItems = [...marqueeItems, ...marqueeItems, ...marqueeItems];
 

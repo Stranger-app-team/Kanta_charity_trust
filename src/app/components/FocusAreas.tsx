@@ -7,79 +7,82 @@ import {
   Users,
   Sparkles,
 } from 'lucide-react';
-
-const focusAreas = [
-  {
-    icon: GraduationCap,
-    title: 'Education',
-    items: [
-      'Scholarships',
-      'School Supplies',
-      'Digital Learning',
-      'Student Support',
-    ],
-    gradient: 'from-[#2E67B2] to-[#28A34A]',
-    image: 'https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGVkdWNhdGlvbiUyMGNsYXNzcm9vbSUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4MXww&ixlib=rb-4.1.0&q=80&w=1080',
-  },
-  {
-    icon: Heart,
-    title: 'Healthcare',
-    items: [
-      'Medical Camps',
-      'Health Awareness',
-      'Medicine Distribution',
-      'Healthcare Access',
-    ],
-    gradient: 'from-[#E34298] to-[#F59A34]',
-    image: 'https://images.unsplash.com/photo-1609252509229-364936a1d1a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwaGVhbHRoJTIwY2FtcCUyMHJ1cmFsJTIwaW5kaWF8ZW58MXx8fHwxNzgxNjk0OTgxfDA&ixlib=rb-4.1.0&q=80&w=1080',
-  },
-  {
-    icon: Briefcase,
-    title: 'Employment',
-    items: [
-      'Skill Development',
-      'Job Assistance',
-      'Entrepreneurship Support',
-    ],
-    gradient: 'from-[#F59A34] to-[#F2C533]',
-    image: 'https://images.unsplash.com/photo-1758599668178-d9716bbda9d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtd29yayUyMHZvbHVudGVlcnMlMjBjb21tdW5pdHklMjBzZXJ2aWNlfGVufDF8fHx8MTc4MTY5NDk4OHww&ixlib=rb-4.1.0&q=80&w=1080',
-  },
-  {
-    icon: Sprout,
-    title: 'Farmer Support',
-    items: [
-      'Agricultural Awareness',
-      'Farmer Assistance Programs',
-    ],
-    gradient: 'from-[#28A34A] to-[#F2C533]',
-    image: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydXJhbCUyMGRldmVsb3BtZW50JTIwZmFybWluZyUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4Mnww&ixlib=rb-4.1.0&q=80&w=1080',
-  },
-  {
-    icon: Users,
-    title: 'Community Support',
-    items: [
-      'Social Welfare',
-      'Relief Programs',
-      'Community Development',
-      'Public Welfare Initiatives',
-    ],
-    gradient: 'from-[#2E67B2] to-[#E34298]',
-    image: 'https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB3ZWxmYXJlJTIwdm9sdW50ZWVycyUyMGhlbHBpbmd8ZW58MXx8fHwxNzgxNjk0OTgzfDA&ixlib=rb-4.1.0&q=80&w=1080',
-  },
-  {
-    icon: Sparkles,
-    title: 'Women Empowerment',
-    items: [
-      'Training Programs',
-      'Self-Reliance Initiatives',
-      'Leadership Development',
-    ],
-    gradient: 'from-[#E34298] to-[#2E67B2]',
-    image: 'https://images.unsplash.com/photo-1587538018365-2a1f8b544c08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGVtcG93ZXJtZW50JTIwd29ya3Nob3AlMjBpbmRpYXxlbnwxfHx8fDE3ODE2OTQ5ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-  },
-];
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function FocusAreas() {
+  const { t } = useTranslation();
+
+  const focusAreas = [
+    {
+      icon: GraduationCap,
+      title: t('focus.edu_title'),
+      items: [
+        t('focus.edu_1'),
+        t('focus.edu_2'),
+        t('focus.edu_3'),
+        t('focus.edu_4'),
+      ],
+      gradient: 'from-[#2E67B2] to-[#28A34A]',
+      image: 'https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGVkdWNhdGlvbiUyMGNsYXNzcm9vbSUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4MXww&ixlib=rb-4.1.0&q=80&w=1080',
+    },
+    {
+      icon: Heart,
+      title: t('focus.health_title'),
+      items: [
+        t('focus.health_1'),
+        t('focus.health_2'),
+        t('focus.health_3'),
+        t('focus.health_4'),
+      ],
+      gradient: 'from-[#E34298] to-[#F59A34]',
+      image: 'https://images.unsplash.com/photo-1609252509229-364936a1d1a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwaGVhbHRoJTIwY2FtcCUyMHJ1cmFsJTIwaW5kaWF8ZW58MXx8fHwxNzgxNjk0OTgxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    },
+    {
+      icon: Briefcase,
+      title: t('focus.emp_title'),
+      items: [
+        t('focus.emp_1'),
+        t('focus.emp_2'),
+        t('focus.emp_3'),
+      ],
+      gradient: 'from-[#F59A34] to-[#F2C533]',
+      image: 'https://images.unsplash.com/photo-1758599668178-d9716bbda9d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtd29yayUyMHZvbHVudGVlcnMlMjBjb21tdW5pdHklMjBzZXJ2aWNlfGVufDF8fHx8MTc4MTY5NDk4OHww&ixlib=rb-4.1.0&q=80&w=1080',
+    },
+    {
+      icon: Sprout,
+      title: t('focus.farm_title'),
+      items: [
+        t('focus.farm_1'),
+        t('focus.farm_2'),
+      ],
+      gradient: 'from-[#28A34A] to-[#F2C533]',
+      image: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydXJhbCUyMGRldmVsb3BtZW50JTIwZmFybWluZyUyMGluZGlhfGVufDF8fHx8MTc4MTY5NDk4Mnww&ixlib=rb-4.1.0&q=80&w=1080',
+    },
+    {
+      icon: Users,
+      title: t('focus.comm_title'),
+      items: [
+        t('focus.comm_1'),
+        t('focus.comm_2'),
+        t('focus.comm_3'),
+        t('focus.comm_4'),
+      ],
+      gradient: 'from-[#2E67B2] to-[#E34298]',
+      image: 'https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB3ZWxmYXJlJTIwdm9sdW50ZWVycyUyMGhlbHBpbmd8ZW58MXx8fHwxNzgxNjk0OTgzfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    },
+    {
+      icon: Sparkles,
+      title: t('focus.women_title'),
+      items: [
+        t('focus.women_1'),
+        t('focus.women_2'),
+        t('focus.women_3'),
+      ],
+      gradient: 'from-[#E34298] to-[#2E67B2]',
+      image: 'https://images.unsplash.com/photo-1587538018365-2a1f8b544c08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGVtcG93ZXJtZW50JTIwd29ya3Nob3AlMjBpbmRpYXxlbnwxfHx8fDE3ODE2OTQ5ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    },
+  ];
+
   return (
     <section id="programs" className="py-16 md:py-24 bg-[#F8FAFC]">
       <div className="container mx-auto px-4 lg:px-8">
@@ -91,11 +94,11 @@ export default function FocusAreas() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Our Focus Areas
+            {t('focus.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto mb-4"></div>
           <p className="text-xl text-[#1F2937]/70 max-w-2xl mx-auto">
-            Empowering communities through comprehensive programs across multiple sectors
+            {t('focus.subtitle')}
           </p>
         </motion.div>
 
@@ -154,7 +157,7 @@ export default function FocusAreas() {
 
                   {/* Hover Effect Arrow */}
                   <div className="mt-4 flex items-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-sm font-semibold">Learn More</span>
+                    <span className="text-sm font-semibold">{t('focus.learn_more')}</span>
                     <svg
                       className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform"
                       fill="none"

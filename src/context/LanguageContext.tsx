@@ -12,8 +12,11 @@ const LanguageContext = createContext<LanguageContextType>({
   t: (key) => key,
 });
 
+import { landingTranslations } from './LandingTranslations';
+
 const translations = {
   en: {
+    ...landingTranslations.en,
     'app.title': 'Kanta Charitable Trust',
     'nav.registration': 'Registration',
     'nav.directory': 'Children Directory',
@@ -65,6 +68,7 @@ const translations = {
     'ph.item': 'Enter item name'
   },
   mr: {
+    ...landingTranslations.mr,
     'app.title': 'कांता चॅरिटेबल ट्रस्ट',
     'nav.registration': 'नोंदणी',
     'nav.directory': 'मुलांची यादी',
@@ -116,6 +120,7 @@ const translations = {
     'ph.item': 'वस्तूचे नाव टाका'
   },
   hi: {
+    ...landingTranslations.hi,
     'app.title': 'कांता चैरिटेबल ट्रस्ट',
     'nav.registration': 'पंजीकरण',
     'nav.directory': 'बच्चों की सूची',

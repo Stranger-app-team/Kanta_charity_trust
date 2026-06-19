@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 import logoImage from '../../imports/png_kct.png';
 
 export default function Navigation() {
+  const { t, language, setLanguage } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,13 +25,13 @@ export default function Navigation() {
   };
 
   const navLinks = [
-    { name: 'About', id: 'about' },
-    { name: 'Programs', id: 'programs' },
-    { name: 'Gallery', id: 'gallery' },
-    { name: 'Events', id: 'events' },
-    { name: 'Volunteer', id: 'volunteer' },
-    { name: 'Donate', id: 'donate' },
-    { name: 'Contact', id: 'contact' },
+    { name: t('nav.about'), id: 'about' },
+    { name: t('nav.programs'), id: 'programs' },
+    { name: t('nav.gallery'), id: 'gallery' },
+    { name: t('nav.events'), id: 'events' },
+    { name: t('nav.volunteer'), id: 'volunteer' },
+    { name: t('nav.donate'), id: 'donate' },
+    { name: t('nav.contact'), id: 'contact' },
   ];
 
   return (
@@ -54,7 +56,7 @@ export default function Navigation() {
             />
             <div className="hidden md:block text-left">
               <div className="text-[#2E67B2] font-bold text-lg lg:text-xl">
-                KANTA CHARITABLE TRUST
+                {t('hero.title')}
               </div>
               <div className="text-[#28A34A] text-xs lg:text-sm">
                 Creating Smiles, Changing Worlds
@@ -74,12 +76,23 @@ export default function Navigation() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2E67B2] group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
-            <button
-              onClick={() => { window.open('/register', '_blank'); }}
-              className="px-5 py-1.5 bg-gradient-to-r from-[#28A34A] to-[#2E67B2] text-white rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all"
+            <a
+              href="/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-1.5 bg-gradient-to-r from-[#28A34A] to-[#2E67B2] text-white rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all inline-block"
             >
-              Form
-            </button>
+              {t('nav.form')}
+            </a>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="px-2 py-1 bg-white border border-[#2E67B2]/50 hover:border-[#2E67B2] rounded-md text-[#2E67B2] text-xs font-semibold outline-none cursor-pointer transition-colors"
+            >
+              <option value="mr">मराठी</option>
+              <option value="en">English</option>
+              <option value="hi">हिंदी</option>
+            </select>
           </div>
 
           {/* Mobile Menu Button */}
@@ -103,12 +116,25 @@ export default function Navigation() {
                 {link.name}
               </button>
             ))}
-            <button
-              onClick={() => { window.open('/register', '_blank'); }}
+            <a
+              href="/register"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-[calc(100%-2rem)] mx-4 my-2 text-center px-4 py-2 bg-gradient-to-r from-[#28A34A] to-[#2E67B2] text-white rounded-full font-semibold hover:shadow-md transition-all"
             >
-              Form
-            </button>
+              {t('nav.form')}
+            </a>
+            <div className="px-4 py-2">
+              <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+                className="w-full px-2 py-1.5 bg-white border border-[#2E67B2]/50 hover:border-[#2E67B2] rounded-md text-[#2E67B2] text-sm font-semibold outline-none cursor-pointer transition-colors"
+              >
+                <option value="mr">मराठी</option>
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+              </select>
+            </div>
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 
 const stories = [
   {
@@ -36,6 +37,7 @@ const stories = [
 ];
 
 export default function SuccessStories() {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -68,11 +70,11 @@ export default function SuccessStories() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Success Stories
+            {t('stories.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto mb-4"></div>
           <p className="text-xl text-[#1F2937]/70 max-w-2xl mx-auto">
-            Real stories of transformation and hope
+            {t('stories.subtitle')}
           </p>
         </motion.div>
 

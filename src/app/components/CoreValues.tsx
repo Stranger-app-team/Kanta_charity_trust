@@ -1,38 +1,41 @@
 import { motion } from 'motion/react';
 import { Heart, HandHeart, TrendingUp, Shield } from 'lucide-react';
-
-const values = [
-  {
-    icon: Heart,
-    title: 'Seva (सेवा)',
-    description: 'Serving Humanity With Compassion',
-    color: 'from-[#E34298] to-[#F59A34]',
-    iconBg: 'bg-[#E34298]',
-  },
-  {
-    icon: HandHeart,
-    title: 'Samarpan (समर्पण)',
-    description: 'Dedicated To Social Welfare',
-    color: 'from-[#F59A34] to-[#F2C533]',
-    iconBg: 'bg-[#F59A34]',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Vikas (विकास)',
-    description: 'Creating Sustainable Development',
-    color: 'from-[#28A34A] to-[#2E67B2]',
-    iconBg: 'bg-[#28A34A]',
-  },
-  {
-    icon: Shield,
-    title: 'Vishwas (विश्वास)',
-    description: 'Building Trust Through Action',
-    color: 'from-[#2E67B2] to-[#E34298]',
-    iconBg: 'bg-[#2E67B2]',
-  },
-];
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function CoreValues() {
+  const { t } = useTranslation();
+
+  const values = [
+    {
+      icon: Heart,
+      title: t('core.v1_title'),
+      description: t('core.v1_desc'),
+      color: 'from-[#E34298] to-[#F59A34]',
+      iconBg: 'bg-[#E34298]',
+    },
+    {
+      icon: HandHeart,
+      title: t('core.v2_title'),
+      description: t('core.v2_desc'),
+      color: 'from-[#F59A34] to-[#F2C533]',
+      iconBg: 'bg-[#F59A34]',
+    },
+    {
+      icon: TrendingUp,
+      title: t('core.v3_title'),
+      description: t('core.v3_desc'),
+      color: 'from-[#28A34A] to-[#2E67B2]',
+      iconBg: 'bg-[#28A34A]',
+    },
+    {
+      icon: Shield,
+      title: t('core.v4_title'),
+      description: t('core.v4_desc'),
+      color: 'from-[#2E67B2] to-[#E34298]',
+      iconBg: 'bg-[#2E67B2]',
+    },
+  ];
+
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
@@ -44,7 +47,7 @@ export default function CoreValues() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Our Core Values
+            {t('core.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto"></div>
         </motion.div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Masonry from 'react-responsive-masonry';
 import { X, Play } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 
 const galleryTabs = ['Photos', 'Events', 'Community Activities'];
 
@@ -30,6 +31,7 @@ const galleryImages = {
 };
 
 export default function Gallery() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('Photos');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -44,11 +46,11 @@ export default function Gallery() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Photo & Video Gallery
+            {t('gallery.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto mb-4"></div>
           <p className="text-xl text-[#1F2937]/70 max-w-2xl mx-auto">
-            Capturing moments of impact and transformation
+            {t('gallery.subtitle')}
           </p>
         </motion.div>
 

@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 import { MapPin, Phone, Mail, MessageCircle, ExternalLink } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function Contact() {
+  const { t } = useTranslation();
   return (
     <section id="contact" className="py-16 md:py-24 bg-[#F8FAFC]">
       <div className="container mx-auto px-4 lg:px-8">
@@ -13,11 +15,11 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4">
-            Contact Us
+            {t('contact.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#2E67B2] to-[#E34298] mx-auto mb-4"></div>
           <p className="text-xl text-[#1F2937]/70 max-w-2xl mx-auto">
-            Get in touch with us for any queries or support
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -37,25 +39,23 @@ export default function Contact() {
                   <MapPin className="text-white" size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">Address</h3>
-                  <p className="text-[#1F2937]/80 text-lg leading-relaxed">
-                    Murum Kendra,<br />
-                    Taluka Umarga,<br />
-                    District Dharashiv,<br />
-                    Maharashtra – 413606
-                  </p>
+                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">{t('contact.address')}</h3>
+                  <p 
+                    className="text-[#1F2937]/80 text-lg leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: t('contact.addr_details') }}
+                  />
                 </div>
               </div>
             </div>
 
-            {/* Phone Numbers */}
+            {/* {t('contact.phone')} */}
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="bg-gradient-to-br from-[#28A34A] to-[#F2C533] p-4 rounded-xl">
                   <Phone className="text-white" size={32} />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-[#1F2937] mb-4">Phone Numbers</h3>
+                  <h3 className="text-2xl font-bold text-[#1F2937] mb-4">{t('contact.phone')}</h3>
                   <div className="space-y-3">
                     <a
                       href="tel:9767179755"
@@ -96,7 +96,7 @@ export default function Contact() {
                   <Mail className="text-white" size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">Email</h3>
+                  <h3 className="text-2xl font-bold text-[#1F2937] mb-2">{t('contact.email')}</h3>
                   <a
                     href="mailto:kantachtrust@gmail.com"
                     className="text-lg text-[#1F2937]/80 hover:text-[#2E67B2] transition-colors inline-flex items-center gap-2 group"
@@ -115,8 +115,8 @@ export default function Contact() {
                   <MessageCircle className="text-white" size={32} />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-xl font-bold text-white mb-2">Quick Contact</h3>
-                  <p className="text-white/90 mb-3">Message us on WhatsApp for instant support</p>
+                  <h3 className="text-xl font-bold text-white mb-2">{t('contact.whatsapp_title')}</h3>
+                  <p className="text-white/90 mb-3">{t('contact.whatsapp_desc')}</p>
                   <a
                     href="https://wa.me/919767179755"
                     target="_blank"
@@ -124,7 +124,7 @@ export default function Contact() {
                     className="inline-flex items-center gap-2 bg-white text-[#28A34A] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all"
                   >
                     <MessageCircle size={20} />
-                    WhatsApp Us
+                    {t('contact.btn_whatsapp')}
                   </a>
                 </div>
               </div>
@@ -165,10 +165,10 @@ export default function Contact() {
         >
           <div className="bg-gradient-to-r from-[#2E67B2] to-[#E34298] rounded-2xl p-8 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Visit Us or Call Us
+              {t('contact.visit_title')}
             </h3>
             <p className="text-white/90 text-lg">
-              We welcome you to visit our office or reach out through any of the contact methods above. Our team is always ready to assist you with your queries and support your desire to make a positive impact.
+              {t('contact.visit_desc')}
             </p>
           </div>
         </motion.div>

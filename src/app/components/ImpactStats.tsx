@@ -1,101 +1,104 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Users, BookOpen, HeartPulse, Building2, UserCheck } from 'lucide-react';
-
-const stats = [
-  {
-    icon: Users,
-    value: 50000,
-    suffix: '+',
-    label: 'People Benefited',
-    color: 'from-[#2E67B2] to-[#28A34A]',
-  },
-  {
-    icon: BookOpen,
-    value: 500,
-    suffix: '+',
-    label: 'Educational Programs',
-    color: 'from-[#F59A34] to-[#F2C533]',
-  },
-  {
-    icon: HeartPulse,
-    value: 300,
-    suffix: '+',
-    label: 'Healthcare Initiatives',
-    color: 'from-[#E34298] to-[#F59A34]',
-  },
-  {
-    icon: Building2,
-    value: 150,
-    suffix: '+',
-    label: 'Community Projects',
-    color: 'from-[#28A34A] to-[#2E67B2]',
-  },
-  {
-    icon: UserCheck,
-    value: 1000,
-    suffix: '+',
-    label: 'Volunteer Network',
-    color: 'from-[#2E67B2] to-[#E34298]',
-  },
-];
-
-function Counter({ value, duration = 2000 }: { value: number; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let startTime: number;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-
-      setCount(Math.floor(progress * value));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [isVisible, value, duration]);
-
-  return <div ref={ref}>{count.toLocaleString()}</div>;
-}
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function ImpactStats() {
+  const { t } = useTranslation();
+
+  const stats = [
+    {
+      icon: Users,
+      value: 50000,
+      suffix: '+',
+      label: t('stats.p1'),
+      color: 'from-[#2E67B2] to-[#28A34A]',
+    },
+    {
+      icon: BookOpen,
+      value: 500,
+      suffix: '+',
+      label: t('stats.p2'),
+      color: 'from-[#F59A34] to-[#F2C533]',
+    },
+    {
+      icon: HeartPulse,
+      value: 300,
+      suffix: '+',
+      label: t('stats.p3'),
+      color: 'from-[#E34298] to-[#F59A34]',
+    },
+    {
+      icon: Building2,
+      value: 150,
+      suffix: '+',
+      label: t('stats.p4'),
+      color: 'from-[#28A34A] to-[#2E67B2]',
+    },
+    {
+      icon: UserCheck,
+      value: 1000,
+      suffix: '+',
+      label: t('stats.p5'),
+      color: 'from-[#2E67B2] to-[#E34298]',
+    },
+  ];
+  
+  function Counter({ value, duration = 2000 }: { value: number; duration?: number }) {
+    const [count, setCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.1 }
+      );
+  
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+  
+      return () => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      };
+    }, []);
+  
+    useEffect(() => {
+      if (!isVisible) return;
+  
+      let startTime: number;
+      let animationFrame: number;
+  
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+  
+        setCount(Math.floor(progress * value));
+  
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(animate);
+        }
+      };
+  
+      animationFrame = requestAnimationFrame(animate);
+  
+      return () => {
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+      };
+    }, [isVisible, value, duration]);
+  
+    return <div ref={ref}>{count.toLocaleString()}</div>;
+  }
+
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-[#2E67B2] via-[#E34298] to-[#F59A34] relative overflow-hidden">
       {/* Decorative Elements */}
@@ -111,11 +114,11 @@ export default function ImpactStats() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our Impact
+            {t('stats.title')}
           </h2>
           <div className="w-24 h-1 bg-white mx-auto mb-4"></div>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Making a difference in thousands of lives across communities
+            {t('stats.subtitle')}
           </p>
         </motion.div>
 

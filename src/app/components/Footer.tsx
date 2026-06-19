@@ -1,8 +1,10 @@
 import { motion } from 'motion/react';
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Heart } from 'lucide-react';
+import { useTranslation } from '../../context/LanguageContext';
 import logoImage from '../../imports/png_kct.png';
 
 export default function Footer() {
+  const { t } = useTranslation();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -52,13 +54,13 @@ export default function Footer() {
             />
             <h3 className="text-2xl font-bold mb-4">KANTA CHARITABLE TRUST</h3>
             <p className="text-xl text-[#F2C533] mb-2">
-              Creating Smiles, Changing Worlds
+              {t('footer.subtitle1')}
             </p>
             <p className="text-xl text-[#28A34A] mb-6">
-              Caring Today, Empowering Tomorrow
+              {t('footer.subtitle2')}
             </p>
             <p className="text-white/80 leading-relaxed mb-6">
-              A social welfare organization dedicated to uplifting communities through education, healthcare, employment support, farmer assistance, women empowerment, and community development.
+              {t('footer.desc')}
             </p>
 
             {/* Social Icons */}
@@ -80,14 +82,14 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Column 2 - Quick Links */}
+          {/* Column 2 - {t('footer.quick')} */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-xl font-bold mb-6">Quick Links</h4>
+            <h4 className="text-xl font-bold mb-6">{t('footer.quick')}</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.id}>
@@ -103,23 +105,23 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Column 3 - Newsletter */}
+          {/* Column 3 - {t('footer.news')} */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-xl font-bold mb-6">Newsletter</h4>
+            <h4 className="text-xl font-bold mb-6">{t('footer.news')}</h4>
             <p className="text-white/80 mb-4">
-              Subscribe to receive updates about our programs and initiatives
+              {t('footer.news_desc')}
             </p>
             <form className="space-y-3">
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-white/60" size={20} />
                 <input
                   type="email"
-                  placeholder="Your email address"
+                  placeholder={t('footer.news_ph')}
                   className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-lg text-white placeholder-white/60 focus:border-white/40 outline-none transition-colors"
                 />
               </div>
@@ -146,7 +148,7 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
               className="text-white/80 text-center md:text-left"
             >
-              © 2026 Kanta Charitable Trust. All rights reserved.
+              {t('footer.rights')}
             </motion.p>
 
             <motion.div
@@ -156,7 +158,7 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="flex items-center gap-2 text-white/80"
             >
-              Made with <Heart className="text-[#E34298] fill-[#E34298]" size={20} /> for Community Welfare
+              {t('footer.made')} <Heart className="text-[#E34298] fill-[#E34298]" size={20} /> {t('footer.for')}
             </motion.div>
 
             <motion.div
@@ -167,10 +169,10 @@ export default function Footer() {
               className="flex gap-6 text-sm"
             >
               <a href="#" className="text-white/80 hover:text-white transition-colors">
-                Privacy Policy
+                {t('footer.privacy')}
               </a>
               <a href="#" className="text-white/80 hover:text-white transition-colors">
-                Terms of Service
+                {t('footer.terms')}
               </a>
             </motion.div>
           </div>
