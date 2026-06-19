@@ -148,7 +148,7 @@ export default function FocusAreas() {
                   </div>
 
                   {/* Hover Effect Arrow */}
-                  <div className="mt-4 flex items-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  <a href="#contact" className="mt-4 flex items-center text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer w-max">
                     <span className="text-sm font-semibold">{t('focus.learn_more')}</span>
                     <svg
                       className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform"
@@ -163,7 +163,7 @@ export default function FocusAreas() {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </div>
+                  </a>
                 </div>
               </motion.div>
             );
