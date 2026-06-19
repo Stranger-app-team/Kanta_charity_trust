@@ -98,10 +98,10 @@ export default function Contact() {
                 <div>
                   <h3 className="text-2xl font-bold text-[#1F2937] mb-2">{t('contact.email')}</h3>
                   <a
-                    href="mailto:kantachtrust@gmail.com"
+                    href="mailto:kanta.chtrust@gmail.com"
                     className="text-lg text-[#1F2937]/80 hover:text-[#2E67B2] transition-colors inline-flex items-center gap-2 group"
                   >
-                    kantachtrust@gmail.com
+                    kanta.chtrust@gmail.com
                     <ExternalLink size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </div>
