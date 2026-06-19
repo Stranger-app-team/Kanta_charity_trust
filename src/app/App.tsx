@@ -19,7 +19,7 @@ import BackToTop from './components/BackToTop';
 
 export default function App() {
   return (
-    <div className="relative bg-[#F8FAFC]">
+    <div className="relative bg-[#F8FAFC] overflow-x-hidden w-full">
       <Navigation />
       <main>
         <Hero />
