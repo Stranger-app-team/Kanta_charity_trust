@@ -235,9 +235,9 @@ const AddChildPage = () => {
               </div>
             </div>
 
-            <div className="h-px bg-gray-200 w-full"></div>
+            {/* <div className="h-px bg-gray-200 w-full"></div>
 
-            {/* Allocations Section */}
+            {/* Allocations Section *\/}
             <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
               <div>
                 <h2 className="text-lg font-bold text-[#2E67B2] mb-1">{t('section.help')}</h2>
@@ -294,7 +294,7 @@ const AddChildPage = () => {
                   <Plus size={16} /> {t('btn.addHelp')}
                 </button>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex justify-center mt-8">
               <button type="button" className="px-5 py-2 text-sm font-semibold text-gray-600 bg-gray-100 border border-gray-200 hover:text-gray-900 hover:bg-gray-200 rounded-full transition-colors shadow-sm" onClick={() => setShowAdditional(false)}>
