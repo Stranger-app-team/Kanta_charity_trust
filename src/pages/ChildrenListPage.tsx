@@ -98,7 +98,7 @@ const ChildrenListPage = () => {
                       <div className="text-xs text-gray-500 mt-1">{child.gender}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-gray-900">{new Date(child.dateOfBirth).toLocaleDateString()}</div>
+                      <div className="text-gray-900">{child.dateOfBirth ? new Date(child.dateOfBirth).toLocaleDateString() : 'NA'}</div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="text-gray-900">{child.guardianName}</div>
