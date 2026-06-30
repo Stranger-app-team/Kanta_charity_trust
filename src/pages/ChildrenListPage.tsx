@@ -3,10 +3,11 @@ import { getChildren } from '../services/api';
 import { Search, X } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const ChildrenListPage = () => {
   const navigate = useNavigate();
-  const { language, setLanguage } = useTranslation();
+  const { t, language, setLanguage } = useTranslation();
   const [children, setChildren] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -38,12 +39,15 @@ const ChildrenListPage = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">Children Directory</h1>
-          <p className="text-sm text-gray-500">View and manage all registered children and their help.</p>
+        <div className="flex items-center gap-4">
+          <img src={logo} alt="Kanta Charitable Trust Logo" className="w-16 h-auto" />
+          <div>
+            <h1 className="text-3xl font-extrabold text-[#2E67B2] mb-1">{t('app.title') || 'Children Directory'}</h1>
+            <p className="text-sm font-medium text-gray-500">View and manage all registered children and their help.</p>
+          </div>
         </div>
 
-        {/* Language and Close controls */}
+        {/* Language controls */}
         <div className="flex items-center self-end sm:self-auto gap-3">
           <select 
             value={language} 
@@ -54,13 +58,6 @@ const ChildrenListPage = () => {
             <option value="mr">मराठी</option>
             <option value="hi">हिंदी</option>
           </select>
-          <button
-            onClick={() => navigate('/')}
-            className="p-1 text-red-500 hover:text-red-700 transition-colors"
-            aria-label="Close directory"
-          >
-            <X size={24} />
-          </button>
         </div>
       </div>
 
@@ -71,22 +68,22 @@ const ChildrenListPage = () => {
         <input
           type="text"
           className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2] shadow-sm transition-shadow"
-          placeholder="Search directory..."
+          placeholder="Search Children..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-        {loading ? (
-          <div className="p-8 text-center text-gray-500">Loading directory...</div>
-        ) : filteredChildren.length === 0 ? (
-          <div className="p-8 text-center text-gray-500">No records found.</div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm whitespace-nowrap">
-              <thead className="bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500 font-semibold">
-                <tr>
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden flex flex-col">
+          {loading ? (
+            <div className="p-8 text-center text-gray-500">Loading directory...</div>
+          ) : filteredChildren.length === 0 ? (
+            <div className="p-8 text-center text-gray-500">No records found.</div>
+          ) : (
+            <div className="overflow-y-auto max-h-[calc(100vh-230px)]">
+              <table className="w-full text-left text-sm whitespace-nowrap relative">
+                <thead className="bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500 font-semibold sticky top-0 z-10 shadow-sm">
+                  <tr>
                   <th className="px-6 py-4">Child</th>
                   <th className="px-6 py-4">Age / DOB</th>
                   <th className="px-6 py-4">Guardian Details</th>
@@ -136,70 +133,96 @@ const ChildrenListPage = () => {
       {/* Child Details Modal */}
       {selectedChild && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 backdrop-blur-sm p-4" onClick={() => setSelectedChild(null)}>
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 lg:p-8 relative" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 lg:p-8 relative" onClick={(e) => e.stopPropagation()}>
             <button className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors" onClick={() => setSelectedChild(null)}>
               <X size={20} />
             </button>
             
-            <h2 className="text-2xl font-bold text-gray-900 mb-1">
-              {selectedChild.firstName} {selectedChild.lastName}
-            </h2>
-            <p className="text-sm text-gray-500 mb-8">
-              Full Details & History
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-              <div>
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Date of Birth</h3>
-                <p className="font-medium text-gray-900">{new Date(selectedChild.dateOfBirth).toLocaleDateString()}</p>
-              </div>
-              <div>
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Gender</h3>
-                <p className="font-medium text-gray-900">{selectedChild.gender}</p>
-              </div>
-              <div>
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Guardian</h3>
-                <p className="font-medium text-gray-900">{selectedChild.guardianName}</p>
-              </div>
-              <div>
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Contact</h3>
-                <p className="font-medium text-gray-900">{selectedChild.contactNumber}</p>
-              </div>
-              <div className="sm:col-span-2">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Address</h3>
-                <p className="font-medium text-gray-900">{selectedChild.address || 'N/A'}</p>
-              </div>
-              <div>
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Education Level</h3>
-                <p className="font-medium text-gray-900">{selectedChild.educationLevel || 'N/A'}</p>
-              </div>
-              <div>
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Medical Conditions</h3>
-                <p className="font-medium text-gray-900">{selectedChild.medicalConditions || 'None'}</p>
-              </div>
-            </div>
-
-            <div className="h-px bg-gray-200 w-full my-8"></div>
-
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Help Provided</h3>
-            {selectedChild.allocations && selectedChild.allocations.length > 0 ? (
-              <div className="flex flex-col gap-3">
-                {selectedChild.allocations.map((alloc, idx) => (
-                  <div key={alloc._id || idx} className="flex justify-between items-center p-4 bg-gray-50 rounded-lg border border-gray-100">
-                    <div className="flex items-center gap-3">
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white text-gray-800 border border-gray-200 shadow-sm">
-                        {alloc.quantity && alloc.quantity > 1 ? `${alloc.quantity}x ` : ''}{alloc.item?.name || alloc.item || 'Unknown'}
-                      </span>
+            <div className="space-y-8 mt-4">
+              
+              {/* Personal Details Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+                <div>
+                  <h2 className="text-lg font-bold text-[#2E67B2] mb-1">{t('section.personal') || 'Personal Details'}</h2>
+                  <p className="text-sm text-gray-500">{t('section.personal.desc') || 'Basic information about the child'}</p>
+                </div>
+                <div>
+                  <div className="bg-white border border-gray-100 border-t-4 border-t-[#2E67B2] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium text-gray-700">{t('label.firstName') || 'First Name'}</label>
+                        <input type="text" value={selectedChild.firstName || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium text-gray-700">{t('label.guardianName') || 'Guardian Name'}</label>
+                        <input type="text" value={selectedChild.guardianName || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium text-gray-700">{t('label.lastName') || 'Last Name'}</label>
+                        <input type="text" value={selectedChild.lastName || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium text-gray-700">{t('label.contactNumber') || 'Contact Number'}</label>
+                        <input type="text" value={selectedChild.contactNumber || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium text-gray-700">{t('label.village') || 'Village'}</label>
+                        <input type="text" value={selectedChild.villageName || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium text-gray-700">{t('label.occupation') || 'Occupation'}</label>
+                        <input type="text" value={selectedChild.occupation || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                      </div>
                     </div>
-                    <span className="text-sm text-gray-500 font-medium">
-                      {new Date(alloc.date).toLocaleDateString()}
-                    </span>
                   </div>
-                ))}
+                </div>
               </div>
-            ) : (
-              <p className="text-gray-500 text-sm italic">No help recorded.</p>
-            )}
+
+              <div className="h-px bg-gray-200 w-full"></div>
+
+              {/* Extended Details Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+                <div>
+                  <h2 className="text-lg font-bold text-[#28A34A] mb-1">{t('section.extended') || 'Extended Details'}</h2>
+                  <p className="text-sm text-gray-500">{t('section.extended.desc') || 'Other basic information'}</p>
+                </div>
+                <div className="bg-white border border-gray-100 border-t-4 border-t-[#28A34A] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-sm font-medium text-gray-700">{t('label.dob') || 'Date of Birth'}</label>
+                      <input type="date" value={selectedChild.dateOfBirth ? new Date(selectedChild.dateOfBirth).toISOString().split('T')[0] : ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="text-sm font-medium text-gray-700">{t('label.gender') || 'Gender'}</label>
+                      <input type="text" value={selectedChild.gender === 'Male' ? (t('gender.male') || 'Male') : selectedChild.gender === 'Female' ? (t('gender.female') || 'Female') : (t('gender.other') || 'Other')} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1 mt-4">
+                    <label className="text-sm font-medium text-gray-700">{t('label.address') || 'Full Address'}</label>
+                    <input type="text" value={selectedChild.address || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-px bg-gray-200 w-full"></div>
+
+              {/* Additional Info Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+                <div>
+                  <h2 className="text-lg font-bold text-[#E34298] mb-1">{t('section.additional') || 'Additional Info'}</h2>
+                  <p className="text-sm text-gray-500">{t('section.additional.desc') || 'Educational and medical records'}</p>
+                </div>
+                <div className="bg-white border border-gray-100 border-t-4 border-t-[#E34298] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-sm font-medium text-gray-700">{t('label.educationLevel') || 'Education Level'}</label>
+                      <input type="text" value={selectedChild.educationLevel || ''} readOnly className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm cursor-not-allowed text-gray-600 focus:outline-none" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       )}

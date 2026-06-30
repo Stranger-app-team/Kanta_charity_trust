@@ -14,7 +14,7 @@ const DashboardLayout = () => {
       <main className="flex-1 w-full max-w-4xl mx-auto p-4 py-6 sm:py-8">
         <Routes>
           <Route path="/register" element={<AddChildPage />} />
-          <Route path="/directory" element={<ChildrenListPage />} />
+          <Route path="/children" element={<ChildrenListPage />} />
           <Route path="/items" element={<ItemsPage />} />
         </Routes>
       </main>
