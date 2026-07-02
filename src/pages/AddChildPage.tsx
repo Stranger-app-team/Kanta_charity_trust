@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { registerChild } from '../services/api';
-import { Plus, Trash2, ArrowRight, X } from 'lucide-react';
+import { Plus, Trash2, ArrowRight, X, CheckCircle } from 'lucide-react';
 import logo from '../assets/logo.png';
 import { useTranslation } from '../context/LanguageContext';
 
@@ -12,6 +12,13 @@ const AddChildPage = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [showAdditional, setShowAdditional] = useState(false);
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if ((error || success) && messageRef.current) {
+      messageRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [error, success]);
   
   const [formData, setFormData] = useState({
     firstName: '',
@@ -88,7 +95,7 @@ const AddChildPage = () => {
         });
         setTimeout(() => {
           setSuccess('');
-        }, 3000);
+        }, 2000);
       } else {
         setError(result.message || t('msg.errorSubmit'));
       }
@@ -124,9 +131,9 @@ const AddChildPage = () => {
         </div>
       </div>
 
-      {error && <div className="p-4 mb-6 rounded-md bg-red-50 text-red-800 border border-red-200 text-sm">{error}</div>}
-      {success && <div className="p-4 mb-6 rounded-md bg-green-50 text-green-800 border border-green-200 text-sm">{success}</div>}
+      {error && <div ref={messageRef} className="p-4 mb-6 rounded-md bg-red-50 text-red-800 border border-red-200 text-sm">{error}</div>}
 
+      {!success ? (
       <form onSubmit={handleSubmit} className="space-y-8">
         
         {/* Personal Details Section */}
@@ -148,7 +155,7 @@ const AddChildPage = () => {
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-700">{t('label.lastName')} </label>
-                  <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.lastName')} required />
+                  <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#2E67B2]" placeholder={t('ph.lastName')} />
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-700">{t('label.contactNumber')} <span className="text-red-500">*</span></label>
@@ -312,6 +319,12 @@ const AddChildPage = () => {
         </div>
 
       </form>
+      ) : (
+        <div ref={messageRef} className="flex flex-col items-center justify-center p-12 my-8 bg-green-50 border border-green-200 rounded-xl shadow-sm transition-all duration-300">
+          <CheckCircle size={64} className="text-green-500 mb-4" />
+          <h2 className="text-2xl font-bold text-green-800 text-center">{success}</h2>
+        </div>
+      )}
     </div>
   );
 };
